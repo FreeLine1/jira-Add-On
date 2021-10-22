@@ -6,7 +6,7 @@ const router = express.Router();
 const serveIndex = (res, next) => {
     try {
         // throw new HttpNotFound("not found", {op: "Get main page"}); // error example
-        res.sendFile(path.join(__dirname, '../../../', 'clientjs', 'build', 'index.html'));
+        res.sendFile(path.join(__dirname, '../../../', 'client', 'build', 'index.html'));
     } catch (e) {
         next(e);
     }

@@ -71,7 +71,7 @@ const runApp = async () => {
         app.use(nocache());
 
         if (devEnv) {
-            app.use(express.static(path.join(__dirname, '../../', 'clientjs', 'build')));
+            app.use(express.static(path.join(__dirname, '../../', 'client', 'build')));
         }
 
         if (process.env.STANDALONE) {

@@ -1,8 +1,8 @@
 {
-    "key": "map-routing",
-    "name": "Map Routing",
-    "description": "This Diploma app Map Routing for Jira",
-    "baseUrl": "https://cdc4-5-58-28-68.ngrok.io",
+    "key": "sign-for-task",
+    "name": "Sign for task",
+    "description": "Jira Addon for the sign for task",
+    "baseUrl": "https://e552-217-196-161-49.ngrok.io",
     "authentication": {
         "type": "jwt"
     },
@@ -14,6 +14,29 @@
     ],
 
     "modules": {
+        "jiraIssueContents": [
+            {
+                "icon": {
+                    "width": 24,
+                    "height": 24,
+                    "url": "icon.png"
+                },
+                "target": {
+                    "type": "web_panel",
+                    "url": "/index.html"
+                },
+                "key": "signkey",
+
+                "name": {
+                    "value": "My Issue Content Panel"
+                },
+                "tooltip": {
+                    "value": "This is a tooltip"
+                }
+
+            }
+        ],
+
         "generalPages": [
             {
                 "key": "main-page",
