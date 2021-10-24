@@ -1,5 +1,36 @@
 .signature {
-    border: 1px solid black;
-    width: 500px;
-    height: 200px;
+    border: 1px solid #292d45;
+    border-radius: 20px;
+    width: 340px;
+    height: 130px;
+    display: flex;
+}
+
+button{
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 500;
+    max-width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    background-color: rgb(0, 82, 204);
+    border-width: 0px;
+    border-radius: 3px;
+    padding: 0px 15px;
+    margin: 5px;
+    height: 34px;
+}
+
+button:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 82, 204, 0.9);
+    box-shadow: transparent 0px 0px 0px 2px;
+}
+.signButtons{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+    margin-top: 83px;
 }

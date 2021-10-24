@@ -2,14 +2,13 @@ import React , {useRef} from "react";
 import './Signature.css'
 
 import CanvasDraw from "react-canvas-draw";
-import SignatureCanvas from 'react-signature-canvas'
-function Signature() {
+import SignatureCanvas from 'react-signature-canvas';
+
+function Signature(canvasRef) {
 //const canvasRef = useRef()
-    let canvasRef;
+
 
     const saveCanvas = () => {
-
-
         console.log(canvasRef.toDataURL('base64string'))
 
         fetch('/sign', {
@@ -23,18 +22,21 @@ function Signature() {
     const clearCanvas = () => {
         canvasRef.clear()
     }
+
     return(
         <div className='draw-container'>
-             <p>HELLO WORLDdd</p>
-            <button onClick={clearCanvas}>Clear</button>
-            <button onClick={saveCanvas}>Send</button>
+
             {/*<CanvasDraw  />*/}
             <div className='signature'>
             <SignatureCanvas
                 penColor='black'
-                canvasProps={{width: 500, height: 200, className: 'sigCanvas'}}
+                canvasProps={{width: 340, height: 130, className: 'sigCanvas'}}
                 ref={(ref) => {canvasRef = ref }}
             />
+                <div className="signButtons">
+                <button onClick={clearCanvas}>Clear</button><br/>
+                <button onClick={saveCanvas}>Send</button>
+                </div>
             </div>
         </div>
     );
