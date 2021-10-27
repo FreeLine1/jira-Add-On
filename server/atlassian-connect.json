@@ -2,7 +2,7 @@
     "key": "sign-for-task",
     "name": "Sign for task",
     "description": "Jira Addon for the sign for task",
-    "baseUrl": "https://e552-217-196-161-49.ngrok.io",
+    "baseUrl": "https://8763-217-196-161-49.ngrok.io",
     "authentication": {
         "type": "jwt"
     },
@@ -28,7 +28,7 @@
                 "key": "signkey",
 
                 "name": {
-                    "value": "My Issue Content Panel"
+                    "value": "Make a signature"
                 },
                 "tooltip": {
                     "value": "This is a tooltip"

@@ -1,7 +1,5 @@
 import React , {useRef} from "react";
-import './Signature.css'
-
-import CanvasDraw from "react-canvas-draw";
+import './Signature.css';
 import SignatureCanvas from 'react-signature-canvas';
 
 function Signature(canvasRef) {

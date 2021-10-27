@@ -1,47 +1,49 @@
 import express from "express";
 import fs from "fs";
+import FormData from "form-data";
+import fetch from "node-fetch";
+const axios = require('axios').default;
 const router = express.Router();
+
+
 
 router.get("/", async (req, res) => {
     res.redirect("/atlassian-connect.json");
 });
 
-router.post("/sign",async (req, res) => {
+router.post("/sign",(req, res) => {
     console.log('new file');
-    const base64file = req.body.file;
-    var body = req.body.file,
-        base64Data = body.replace(/^data:image\/png;base64,/,""),
-        binaryData = new Buffer(base64Data, 'base64').toString('binary');
+    const body = req.body.file;
+    const base64Data = body.replace(/^data:image\/png;base64,/,"");
+    const binaryData = Buffer.from(base64Data, 'base64').toString('binary');
+    fs.writeFile("out.png", binaryData, "binary", err => {
 
-    require("fs").writeFile("out.png", binaryData, "binary", function(err) {
-        console.log(err); // writes out file without error, but it's not a valid image
     });
 
-    const filePath = 'out.png';
-    const form = new FormData();
-    const stats = fs.statSync(filePath);
-    const fileSizeInBytes = stats.size;
-    const fileStream = fs.createReadStream(filePath);
-    const image = new Blob(fs.unlinkSync(filePath));
-    form.append('file', image);
+    let data = new FormData();
 
-        fetch('https://maxym-dev.atlassian.net/rest/api/3/issue/SFL-1/attachments', {
-            method: 'POST',
-            body: form,
-            headers: {
-                'Authorization': `Basic bWF4aWsuNTV0QGdtYWlsLmNvbTpRMjRJU3FDM2lnaDhsa3FGc3BuTEEwQUQ=`,
-                'Accept': 'application/json',
-                'X-Atlassian-Token': 'no-check'
-            }
+    data.append('file', fs.createReadStream('out.png'));
+
+    let config = {
+        method: 'post',
+        url: 'https://maxym-dev.atlassian.net/rest/api/3/issue/SFL-1/attachments',
+        headers: {
+            'X-Atlassian-Token': 'no-check',
+            'Authorization': 'Basic bWF4aWsuNTV0QGdtYWlsLmNvbTpRMjRJU3FDM2lnaDhsa3FGc3BuTEEwQUQ=',
+            ...data.getHeaders()
+        },
+        data : data
+    };
+
+    axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
         })
-            .then(response => {
-                console.log(
-                    `Response: ${response.status} ${response.statusText}`
-                );
-                return response.text();
-            })
-            .then(text => console.log(text))
-            .catch(err => console.error(err));
+        .catch(function (error) {
+            console.log(error);
+        });
+
+
 
 })
 
