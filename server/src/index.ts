@@ -22,9 +22,8 @@ import nocache from 'nocache';
 import preMiddlewareRouter from './routes/preMiddlewareRouter';
 import router from './routes';
 import cors from 'cors';
-
 import db from "./service/db";
-import publicRouter from "./routes/publicRouter";
+
 
 const runApp = async () => {
     try {

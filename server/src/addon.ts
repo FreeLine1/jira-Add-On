@@ -17,9 +17,11 @@ addon.on("host_settings_saved", async (accountId, data) => {
             userAccountId: data.userAccountId
         };
         const jira = new Jira(context);
+
     } catch (e) {
         logger.error(e);
     }
+
 });
 
 
