@@ -4,7 +4,7 @@
         "port": 3000,
         "store": {
             "adapter": "mongodb",
-            "url": "mongodb+srv://FreeLine:Maxym911@cluster0.inwij.mongodb.net/myFirstDatabase?retryWrites=true&w=majority\nt",
+            "url": "mongodb+srv://FreeLine:Maxym911@cluster0.inwij.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
             "database": "TESTSUPPERAPP",
             "collection": "AddonSettings",
             "useUnifiedTopology": true
@@ -14,7 +14,7 @@
         "port": 3000,
         "store": {
             "adapter": "mongodb",
-            "url": "mongodb+srv://FreeLine:Maxym911@cluster0.inwij.mongodb.net/myFirstDatabase?retryWrites=true&w=majority\nt",
+            "url": "mongodb+srv://FreeLine:Maxym911@cluster0.inwij.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
             "database": "TESTSUPPERAPP",
             "collection": "AddonSettings",
             "useUnifiedTopology": true

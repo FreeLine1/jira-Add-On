@@ -36,43 +36,43 @@ function Signature(canvasRef) {
             })
 
 
-            const commentData = JSON.stringify({
-                "body": {
-                    "type": "doc",
-                    "version": 1,
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
-                                    "type": "text"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            });
-
-            // Returns statusCode 415 - Unsupported media type
-            window.AP.request({
-                url: `/rest/api/3/issue/SFL-1/comment`,
-                type: 'POST',
-                data: commentData,
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                success: function(responseText){
-                    console.log(responseText);
-                },
-                error: function(xhr, statusText, errorThrown){
-                    console.log(arguments);
-                }
-            });
-
-
-        })
+        //     const commentData = JSON.stringify({
+        //         "body": {
+        //             "type": "doc",
+        //             "version": 1,
+        //             "content": [
+        //                 {
+        //                     "type": "paragraph",
+        //                     "content": [
+        //                         {
+        //                             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
+        //                             "type": "text"
+        //                         }
+        //                     ]
+        //                 }
+        //             ]
+        //         }
+        //     });
+        //
+        //     // Returns statusCode 415 - Unsupported media type
+        //     window.AP.request({
+        //         url: `/rest/api/3/issue/SFL-1/comment`,
+        //         type: 'POST',
+        //         data: commentData,
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         success: function(responseText){
+        //             console.log(responseText);
+        //         },
+        //         error: function(xhr, statusText, errorThrown){
+        //             console.log(arguments);
+        //         }
+        //     });
+        //
+        //
+        // })
 
 
         // window.AP.navigator.reload();

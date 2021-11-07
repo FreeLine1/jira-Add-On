@@ -44,41 +44,48 @@ router.post("/sign", (req, res) => {
 
 
 
-    const bodyData = JSON.stringify({
-        "body": {
-            "type": "doc",
-            "version": 1,
-            "content": [
-                {
-                    "type": "paragraph",
-                    "content": [
-                        {
-                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
-                            "type": "text"
-                        }
-                    ]
-                }
-            ]
-        }
-    });
+    // const bodyData = JSON.stringify({
+    //     "body": {
+    //         "type": "doc",
+    //         "version": 1,
+    //         "content": [
+    //             {
+    //                 "type": "paragraph",
+    //                 "content": [
+    //                     {
+    //                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
+    //                         "type": "text"
+    //                     }
+    //                 ]
+    //             }
+    //         ]
+    //     }
+    // });
 
+
+
+ // де "381249ea-0f75-37f3-a3d5-922f645cf89f" - id jira account(не юзерського)
     // Returns  TypeError: Cannot read properties of undefined (reading 'post')
-    async function postCommentToIssue(issueKey, httpClient, type, group, jira) {
-        // const time = group[type + "TimeLimit"].split(":");
+    async function postCommentToIssue() {
 
-        const bodyMessage = `{
-              "body": {
-                "type": "doc",
-                "content": [
-                  {
-                  "type": "paragraph",
-                    "content": [
-                      {
-                        "type": "text",...
- ],
-                "version": 1
-              }
-            }`;
+        const httpClient = addon.httpClient({clientKey: "3ee9d04b-2c3e-38fa-91b7-b9d98b76dece"});
+        const bodyMessage = JSON.stringify({
+                    "body": {
+                        "type": "doc",
+                        "version": 1,
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "text": "111Lorem ipsum dolor sit amet,ge iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                });
         console.log(bodyMessage);
 
        await  httpClient.post({
