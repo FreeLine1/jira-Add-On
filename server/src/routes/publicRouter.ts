@@ -10,15 +10,17 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/sign", (req, res) => {
+
     const body = req.body.file;
+    const commentName = req.body.name;
     const base64Data = body.replace(/^data:image\/png;base64,/, "");
     const binaryData = Buffer.from(base64Data, 'base64').toString('binary');
-    fs.writeFile("out.png", binaryData, "binary", err => {
-
+    fs.writeFile("sign.png", binaryData, "binary", err => {
+        console.log(err);
     });
 
     const data = new FormData();
-    data.append('file', fs.createReadStream('out.png'));
+    data.append('file', fs.createReadStream('sign.png'));
 
     const attachmentConfig = {
         method: 'post',
@@ -42,70 +44,42 @@ router.post("/sign", (req, res) => {
         });
 
 
-
-
-    // const bodyData = JSON.stringify({
-    //     "body": {
-    //         "type": "doc",
-    //         "version": 1,
-    //         "content": [
-    //             {
-    //                 "type": "paragraph",
-    //                 "content": [
-    //                     {
-    //                         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis elit. Duis eu justo eget augue iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
-    //                         "type": "text"
-    //                     }
-    //                 ]
-    //             }
-    //         ]
-    //     }
-    // });
-
-
-
- // де "381249ea-0f75-37f3-a3d5-922f645cf89f" - id jira account(не юзерського)
-    // Returns  TypeError: Cannot read properties of undefined (reading 'post')
     async function postCommentToIssue() {
 
         const httpClient = addon.httpClient({clientKey: "3ee9d04b-2c3e-38fa-91b7-b9d98b76dece"});
         const bodyMessage = JSON.stringify({
-                    "body": {
-                        "type": "doc",
-                        "version": 1,
+            "body": {
+                "type": "doc",
+                "version": 1,
+                "content": [
+                    {
+                        "type": "paragraph",
                         "content": [
                             {
-                                "type": "paragraph",
-                                "content": [
-                                    {
-                                        "text": "111Lorem ipsum dolor sit amet,ge iaculis fermentum. Sed semper quam laoreet nisi egestas at posuere augue semper.",
-                                        "type": "text"
-                                    }
-                                ]
+                                "text": `Signature was made by ${commentName}`,
+                                "type": "text"
                             }
                         ]
                     }
-                });
-        console.log(bodyMessage);
+                ]
+            }
+        });
 
-       await  httpClient.post({
+        await httpClient.post({
             url: `/rest/api/3/issue/SFL-1/comment`,
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: bodyMessage
-        }, (err, response, body) => {
+        }, (err) => {
             if (err) console.error(err);
-            console.log("comment " + response.statusCode);
-            console.log("body " + body);
         });
     }
+
     // @ts-ignore
     postCommentToIssue();
-    })
-
-
+})
 
 
 export default router;
