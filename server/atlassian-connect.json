@@ -2,7 +2,7 @@
     "key": "sign-for-task",
     "name": "Sign for task",
     "description": "Jira Addon for the sign for task",
-    "baseUrl": "https://e0cf-217-196-161-49.ngrok.io",
+    "baseUrl": "https://d081-217-196-161-49.ngrok.io",
     "authentication": {
         "type": "jwt"
     },
@@ -34,20 +34,6 @@
                     "value": "This is a tooltip"
                 }
 
-            }
-        ],
-
-        "generalPages": [
-            {
-                "key": "main-page",
-                "location": "system.top.navigation.bar",
-                "name": {
-                    "value": "Main Page"
-                },
-                "url": "/main",
-                "conditions": [{
-                    "condition": "user_is_logged_in"
-                }]
             }
         ]
     }
