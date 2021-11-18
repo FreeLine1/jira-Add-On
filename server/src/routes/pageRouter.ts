@@ -14,7 +14,6 @@ const serveIndex = (res, next) => {
 
 const indexRoutes = ["/main", "/web-panel"];
 
-//router.get(main) render react!!!
 
 router.get(indexRoutes, async (req, res, next) => {
     serveIndex(res, next);

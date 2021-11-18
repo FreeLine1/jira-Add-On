@@ -2,7 +2,7 @@
     "key": "sign-for-task",
     "name": "Sign for task",
     "description": "Jira Addon for the sign for task",
-    "baseUrl": "https://d081-217-196-161-49.ngrok.io",
+    "baseUrl": "https://e122-217-196-161-49.ngrok.io",
     "authentication": {
         "type": "jwt"
     },
