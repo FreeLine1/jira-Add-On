@@ -9,7 +9,8 @@ router.get("/", async (req, res) => {
     res.redirect("/atlassian-connect.json");
 });
 
-router.post("/sign", (req, res) => {
+// @ts-ignore
+router.post("/sign", addon.checkValidToken(), (req, res) => {
 
     const body = req.body.file;
     const commentName = req.body.name;
@@ -77,7 +78,6 @@ router.post("/sign", (req, res) => {
         });
     }
 
-    // @ts-ignore
     postCommentToIssue();
 })
 

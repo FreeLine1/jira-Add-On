@@ -28,6 +28,11 @@ button:hover {
     background-color: rgba(0, 82, 204, 0.9);
     box-shadow: transparent 0px 0px 0px 2px;
 }
+
+button:disabled {
+    background-color: grey;
+}
+
 .signButtons{
     display: flex;
     flex-direction: row;
