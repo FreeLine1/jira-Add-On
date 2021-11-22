@@ -1,8 +1,8 @@
 import React, {useRef} from "react";
 import './Signature.css';
 import SignatureCanvas from 'react-signature-canvas';
-import axiosPost from '../../lib/axiosPost.js'
 
+import createSign from "../../lib/createSign";
 
 function Signature(canvasRef) {
 
@@ -23,8 +23,11 @@ function Signature(canvasRef) {
                 }
             })
         }).then((data) => {
-            const resultBody = JSON.parse(data.body);
-            return axiosPost(canvasRef, resultBody);
+            const axiosData = JSON.stringify({
+                file: canvasRef.toDataURL('base64string'),
+                name: JSON.parse(data.body).displayName
+            });
+            return createSign(axiosData);
 
         }).catch((err) => {
             console.log('error:', err)
