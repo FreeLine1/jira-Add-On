@@ -1,7 +1,6 @@
 import React, {useRef} from "react";
 import './Signature.css';
 import SignatureCanvas from 'react-signature-canvas';
-
 import createSign from "../../lib/createSign";
 
 function Signature(canvasRef) {
@@ -23,10 +22,18 @@ function Signature(canvasRef) {
                 }
             })
         }).then((data) => {
+            return new Promise((resolve, reject) => {
+                window.AP.context.getContext(function (response) {
+                    resolve({key: response.jira.issue.key, data})
+                })
+            })
+        }).then(({key, data}) => {
             const axiosData = JSON.stringify({
                 file: canvasRef.toDataURL('base64string'),
-                name: JSON.parse(data.body).displayName
+                name: JSON.parse(data.body).displayName,
+                issueKey: key
             });
+
             return createSign(axiosData);
 
         }).catch((err) => {
