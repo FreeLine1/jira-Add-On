@@ -1,5 +1,6 @@
 import addon from "../addon";
 import express from "express";
+
 const router = express.Router();
 
 
@@ -55,10 +56,8 @@ router.post("/sign", addon.checkValidToken(), (req, res) => {
         })
     };
 
-
     Promise.all([httpClient.post(attachmentConfig), httpClient.post(commentConfig)])
         .then(() => res.status(200).json({status: "OK"}))
-
 })
 
 export default router;

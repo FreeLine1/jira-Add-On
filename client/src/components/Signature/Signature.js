@@ -35,17 +35,14 @@ function Signature(canvasRef) {
             });
 
             return createSign(axiosData);
-
         }).catch((err) => {
             console.log('error:', err)
         }).finally(() => window.AP.navigator.reload())
-
     }
 
     const clearCanvas = () => {
         canvasRef.clear()
     }
-
 
     return (
         <div className='draw-container'>
